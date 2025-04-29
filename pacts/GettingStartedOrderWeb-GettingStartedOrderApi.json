@@ -4,6 +4,65 @@
   },
   "interactions": [
     {
+      "description": "a request for multiple orders",
+      "providerStates": [
+        {
+          "name": "there are multiple orders"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/orders"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 1,
+            "items": [
+              {
+                "name": "burger",
+                "quantity": 2,
+                "value": 100
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "items": [
+              {
+                "name": "fries",
+                "quantity": 1,
+                "value": 50
+              }
+            ]
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for orders",
+      "providerStates": [
+        {
+          "name": "there are no orders"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/orders"
+      },
+      "response": {
+        "body": [],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
       "description": "a request for orders",
       "providerStates": [
         {
@@ -51,7 +110,62 @@
               ]
             }
           },
-          "header": {}
+          "header": {},
+          "status": {}
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for orders",
+      "providerStates": [
+        {
+          "name": "there is a single order with no items"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/orders"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 1,
+            "items": []
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for orders",
+      "providerStates": [
+        {
+          "name": "there is an order with a negative quantity"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/orders"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 1,
+            "items": [
+              {
+                "name": "burger",
+                "quantity": -2,
+                "value": 100
+              }
+            ]
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
         },
         "status": 200
       }
@@ -59,11 +173,11 @@
   ],
   "metadata": {
     "pact-js": {
-      "version": "12.1.0"
+      "version": "14.0.0"
     },
     "pactRust": {
-      "ffi": "0.4.7",
-      "models": "1.1.9"
+      "ffi": "0.4.22",
+      "models": "1.2.3"
     },
     "pactSpecification": {
       "version": "3.0.0"

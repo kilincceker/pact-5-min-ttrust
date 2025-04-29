@@ -15,14 +15,15 @@
     "pact:show": "cat pacts/GettingStartedOrderWeb-GettingStartedOrderApi.json | jq .",
     "test": "cross-env PACT_URL=$PWD/pacts/GettingStartedOrderWeb-GettingStartedOrderApi.json npm run test:consumer && npm run test:provider",
     "test:broker": "cross-env PACT_BROKER_BASE_URL=https://pactbroker.$REPL_OWNER.repl.co npm run test:consumer && npm run pact:publish && npm run test:provider",
-    "get:broker": "echo 'fork a copy of https://replit.com/@pact/pactbroker and run npm test:broker when it has started'"
+    "get:broker": "echo 'fork a copy of https://replit.com/@pact/pactbroker and run npm test:broker when it has started'",
+    "start:mock-server": "node startMockServer.js"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "@pact-foundation/pact": "14.0.0",
-    "mocha": "^11.0.0",
-    "superagent": "^10.0.0",
     "chai": "^4.3.7",
-    "chai-as-promised": "^7.1.1"
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^7.0.3",
+    "mocha": "^11.1.0",
+    "superagent": "^10.0.0"
   }
 }
